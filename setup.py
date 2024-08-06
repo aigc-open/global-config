@@ -12,7 +12,7 @@ with open('requirements.txt') as f:
     requirements = f.readlines()
 
 setup(
-    name="gpt_cut_messages",
+    name="global-config",
     version="0.1",
     packages=find_packages(),
     include_package_data=True,
