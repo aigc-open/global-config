@@ -40,6 +40,14 @@ class GlobalConfig(BaseModel):
                         setattr(self, k, False)
                 else:
                     setattr(self, k, type(getattr(self, k))(v))
+                logger.info(f"修改配置: {k}={v}, type={type(v)}")
             else:
                 logger.warning(f"参数{k}={v}设置失败,因为没有这个属性")
         return env_
+
+
+global_config = GlobalConfig()
+CONFIG_PATH = os.environ.get(
+    "CONFIG_PATH", "./conf/config.yaml")
+global_config.init_config(path=CONFIG_PATH)
+global_config.init_env()
